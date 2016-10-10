@@ -1,0 +1,133 @@
+
+(*
+effect EffectExample : unit -> bool
+
+let a = handler
+	| #EffectExample () k -> k true
+
+;;
+
+let test_func y  =
+	with y handle (if #EffectExample () then 5 else 20)
+
+;;
+
+test_func
+*)
+
+effect EffectExampleStr : string -> bool
+
+let a = handler
+	| #EffectExampleStr str k -> k true
+
+;;
+
+(*
+let _test_284 = (fun _v_285 ->
+   (_to_string_40 _v_285) >>
+   fun _s_286 ->
+      call Effect_EffectExample _s_286 (fun _result_67 ->  value _result_67))
+
+
+Combining a Bind and a Handle or Handler ???
+
+	Handler = expression
+	Handle = computation
+
+	Handler of handler = {
+							effect_clauses : (effect, abstraction2) Common.assoc;
+							value_clause : abstraction;
+							finally_clause : abstraction;
+						}
+
+	Handle of expression * computation
+		ex.
+			with (expression) handle (computation)
+
+	Bind of computation * abstraction
+		abstraction = (pattern * computation, Scheme.abstraction_scheme) annotation
+
+		So the bind function is like a semicolon; it separates the steps in a process.
+		The bind function's job is to take the output from the previous step,
+		and feed it into the next step.
+
+*)
+
+let test v = let s = to_string v in #EffectExampleStr s
+
+;;
+
+(*
+
+let _test2_287 = (fun _v_288 ->  _to_string_40
+	_v_288 >> fun _s_289 -> (effect Effect_EffectExample)
+	_s_289 >> fun _ -> (effect Effect_EffectExample)
+	_s_289)
+
+
+_test2_287 =
+	Function (_v_288) {
+		func1 = Function (a) {
+			(effect Effect_EffectExample) _s_289
+		}
+
+		func2 = Function (b) {
+			(effect Effect_EffectExample) _s_289
+		}
+	}
+
+*)
+
+let test2 v = let s = v in
+	#EffectExampleStr s
+
+;;
+
+effect EffectExample : unit -> bool
+
+let incompleteHandler = handler
+	| #EffectExample () k -> k true
+;;
+
+let tmp h =
+	with h handle
+		(if (#EffectExample ()) then 5 else 20)
+
+;;
+
+tmp (handler
+	| #EffectExample () k -> k true)
+
+;;
+
+with incompleteHandler handle
+		(if (#EffectExample ()) then 5 else 20)
+;;
+
+(*
+let x = (with h handle c) in x + 5
+*)
+
+let finHandler = handler
+	| #EffectExample () k -> k true
+	| finally x -> x + 5
+;;
+
+let a =
+	with finHandler handle
+		(if (#EffectExample ()) then 5 else 20)
+;;
+
+let x = (with finHandler handle
+			(if (#EffectExample ()) then 5 else 20)
+	) in x + 5
+
+
+;;
+
+let b =
+	handle (if (#EffectExample ()) then 5 else 20)
+		with
+				| #EffectExample () k -> k true
+				| finally x -> x + 5
+;;
