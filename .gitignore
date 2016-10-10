@@ -3,3 +3,5 @@
 a.out
 _tmp
 *.eff.ml
+
+eff/
