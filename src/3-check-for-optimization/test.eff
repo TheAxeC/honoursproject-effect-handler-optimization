@@ -1,0 +1,60 @@
+
+effect EffectExample : unit -> int
+
+let handlerExample = handler
+	| #EffectExample () k -> k 5
+;;
+
+let f x = x + 5
+
+;;
+
+(*********************************)
+
+(*
+NON-optimized example:
+    Function call with an addition
+*)
+
+with handlerExample handle
+    f (#EffectExample ()) + 5
+
+;;
+
+(*********************************)
+
+(*
+Optimized example:
+    Just a function call is optimized
+*)
+
+with handlerExample handle
+    f (#EffectExample ())
+
+(*********************************)
+
+(*
+let _f_283 _x_284 = value (Pervasives.(+) _x_284 5)
+let _ =
+  handle
+    {
+      value_clause = (fun _gen_id_par_83  -> value _gen_id_par_83);
+      finally_clause = (fun _gen_id_par_82  -> value _gen_id_par_82);
+      effect_clauses = fun (type a) -> fun (type b) ->
+        fun (x : (a,b) effect)  ->
+          (match x with
+           | Effect_EffectExample  ->
+               (fun (() : unit)  ->
+                  fun (_k_84 : int -> _ computation)  -> _k_84 5)
+           | eff' -> (fun arg  -> fun k  -> Call (eff', arg, k)) : a ->
+                                                                    (b ->
+                                                                    _
+                                                                    computation)
+                                                                    ->
+                                                                    _
+                                                                    computation)
+    }
+    ((_f_283 5) >>
+       (fun _gen_bind_81  -> value (Pervasives.(+) _gen_bind_81 5)))
+let _ = value (Pervasives.(+) 5 5)
+*)
