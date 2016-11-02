@@ -22,9 +22,15 @@
 
 ## Todo :: 24 Okt - 31 Okt 2016
 - [x] Explanation papers
-- [ ] Explain optimizations in Guide
+- [x] Explain optimizations in Guide
 - [x] Write optimization - no-effects-used
 - [x] Write optimization - no-effects-used-first-part-of-bind
-- [ ] Run test suite
-- [ ] Run N-Queens
-- [ ] Reorder existing optimizations to be more efficient
+- [x] Run test suite
+- [x] Run N-Queens
+- [x] Reorder existing optimizations to be more efficient
+
+- [x] Check if optimization works with interpreter: No
+- [x] Add unoptimized file to be able to compare optimized and non-optimized
+- [ ] Fix optimization
+- [ ] Clone efficient-handlers benchmark repository
+- [ ] Write split-handler optimization

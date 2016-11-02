@@ -1,0 +1,38 @@
+"----------------------------------------------------------------";;
+"Declarations of the effect and handler";;
+
+effect EffectExample : unit -> int
+
+effect EffectExampleOther : unit -> int
+
+let handlerExample = handler
+	| #EffectExample () k ->
+		handle k 1 with
+			| #EffectExampleOther () k2 -> k2 1
+	| val x -> x + 3
+
+let handlerExampleInline = handler
+	| #EffectExample () k -> k 1
+	| #EffectExampleOther () k2 -> k2 1
+	| val x -> x + 3
+
+;;
+
+(*********************************)
+"Declarations of the helper functions";;
+
+let functionExample () = 1 + #EffectExample () + #EffectExampleOther ()
+
+;;
+
+(*********************************)
+"Example with double handler";;
+
+with handlerExample handle (functionExample () + 2)
+
+;;
+
+(*********************************)
+"Example with single handler";;
+
+with handlerExampleInline handle (functionExample () + 2)

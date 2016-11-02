@@ -195,9 +195,9 @@ value (Pervasives.(+) (Pervasives.(+) (Pervasives.(+) 1 2) 3) 4)
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/5-write-optimization` |
-| time          | **Spend approximately 10 hours this week.**      |
+| time          | **Spend approximately 20 hours this week.**      |
 
-### optimization
+### Optimization
 ```ocaml
 with h handle (c)
 ```  
@@ -263,3 +263,29 @@ This can be written as:
   Print.debug "Remove handler of outer Bind, keep handler since no effects in common with computation";
   reduce_comp (bind (reduce_comp c1) (abstraction p1 (reduce_comp (handle (refresh_expr handler) c2))))
 ```
+
+## Thoughts
+I have tested these optimizations with the new testsuite. All cases that succeeded before, also succeed when the optimizations are enabled.
+
+I have also run the `n-queens.eff` example. It is interesting to note that all `Fail` effects are removed.
+
+## Questions
+Can an optimized file also be interpreted by the Eff compiler?  
+Would it be possible to also optimize commands when not using the `--compile` flag.
+
+## Other optimization
+The following optimization should be possible in certain circumstances.
+```ocaml
+with h handle (f x >> c2)
+
+(with h' handle (f x)) >> (with h'' handle (c2))
+```  
+Can this be generalized to:
+```ocaml
+with h handle (c1 >> c2)
+
+(with h' handle (c1)) >> (with h'' handle (c2))
+```  
+
+## More questions
+Why can I not run the main "test.eff.ml" file but I can run the ml file in \_tmp?  
