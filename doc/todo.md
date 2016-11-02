@@ -20,7 +20,7 @@
 - [ ] Write optimization - no-effects-used
     * [x] Started first tests
 
-## Todo :: 24 Okt - 31 Okt 2016
+## Todo :: 24 Okt - 30 Okt 2016
 - [x] Explanation papers
 - [x] Explain optimizations in Guide
 - [x] Write optimization - no-effects-used
@@ -31,6 +31,8 @@
 
 - [x] Check if optimization works with interpreter: No
 - [x] Add unoptimized file to be able to compare optimized and non-optimized
-- [ ] Fix optimization
+
+## Todo :: 31 Okt - 6 Nov 2016
+- [x] Fix optimization
 - [ ] Clone efficient-handlers benchmark repository
 - [ ] Write split-handler optimization

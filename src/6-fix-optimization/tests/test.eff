@@ -7,7 +7,7 @@ effect EffectExampleOther : unit -> int
 
 let handlerExample = handler
 	| #EffectExample () k ->
-		handle k 1 with
+		handle (k 1) with
 			| #EffectExampleOther () k2 -> k2 1
 	| val x -> x + 3
 
@@ -15,7 +15,6 @@ let handlerExampleInline = handler
 	| #EffectExample () k -> k 1
 	| #EffectExampleOther () k2 -> k2 1
 	| val x -> x + 3
-
 ;;
 
 (*********************************)
@@ -23,10 +22,12 @@ let handlerExampleInline = handler
 
 let functionExample () = 1 + #EffectExample () + #EffectExampleOther ()
 
+let functionWrapper f = f ()
+
 ;;
 
 (*********************************)
-"Example with double handler";;
+"Example with nested handler";;
 
 with handlerExample handle (functionExample () + 2)
 
@@ -36,3 +37,10 @@ with handlerExample handle (functionExample () + 2)
 "Example with single handler";;
 
 with handlerExampleInline handle (functionExample () + 2)
+
+;;
+
+(*********************************)
+"Example with single handler that takes a function";;
+
+with handlerExampleInline handle (functionWrapper (functionExample) + 2)
