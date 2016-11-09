@@ -2,8 +2,9 @@
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/6-fix-optimization` |
-| time          | **Spend approximately 7 hours this week.**      |
+| time          | **Spend approximately 10 hours this week.**      |
 | head          | `b9eea0f`      |
+| own commit          | `1abce2d`      |
 
 ## Fixing the previous optimization
 The complete, minimal example that shows the bug
@@ -42,5 +43,11 @@ Reference file:
 Produced file:
 ```ocaml
 let _ = value (Pervasives.( * ) 3 2)
-
 ```
+
+## Meeting: 3 November 2016
+
+
+| Typing system        |          |
+| ------------- |:--------:|
+| `src/typing/constraints.ml` | Constraint definitions |

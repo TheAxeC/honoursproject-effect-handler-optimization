@@ -77,13 +77,23 @@ This can be written as:
 I have tested these optimizations with the new testsuite. All cases that succeeded before, also succeed when the optimizations are enabled.
 
 I have also run the `n-queens.eff` example. It is interesting to note that all `Fail` effects are removed.
+ * This was actually an effect from the incorrect optimization
 
 ## Questions
-- Can an optimized file also be interpreted by the Eff compiler?  
+Can an optimized file also be interpreted by the Eff compiler?  
 Would it be possible to also optimize commands when not using the `--compile` flag.
  * This is not possible since the interpreter is not up to date.
 
-## Other optimization
+## Meeting: 28 Oktober
+The current optimization is wrong. This can be seen in `queens.eff` which does not compile correctly. Too many handlers are removed. I should use the region parameter.
+### Other optimization
+```ocaml
+h (c1 >> x. c2)  
+h' (c1)  
+
+with the continuation (c2) refactored into the value case of the handler
+```
+
 The following optimization should be possible in certain circumstances.
 ```ocaml
 with h handle (f x >> c2)
@@ -96,3 +106,6 @@ with h handle (c1 >> c2)
 
 (with h' handle (c1)) >> (with h'' handle (c2))
 ```  
+
+### Benchmarking
+Benchmarking can be done with the efficient-handlers repository.
