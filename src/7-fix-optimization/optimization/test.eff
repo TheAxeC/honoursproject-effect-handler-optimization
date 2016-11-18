@@ -1,0 +1,46 @@
+"----------------------------------------------------------------";;
+"Declarations of the effect and handler";;
+
+effect EffectExample : unit -> int
+
+effect EffectExampleOther : unit -> int
+
+;;
+
+let functionExample () = 1 + (#EffectExample ())
+
+;;
+
+let handlerExampleNoVal = handler
+	| #EffectExample () k -> k 2 + k 2
+
+let handlerExample = handler
+	| #EffectExample () k -> k 2 + k 2
+  | val x -> x + 4
+
+let handlerExampleValue = handler
+  | #EffectExample () k -> k 2 + k 2
+  | val x -> x + 3 + 4
+
+let handlerExampleNested = handler
+  | #EffectExample () k -> k 2 + k 2
+
+
+;;
+
+"----------------------------------------------------------------";;
+"Tests";;
+
+with handlerExample handle (functionExample () + 3)
+
+;;
+
+with handlerExampleValue handle (functionExample ())
+
+;;
+
+with handlerExample handle (functionExample () + functionExample ())
+
+;;
+
+with handlerExampleNested handle (functionExample ())
