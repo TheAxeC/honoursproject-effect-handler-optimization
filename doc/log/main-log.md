@@ -5,7 +5,7 @@ This is my main log file for the honoursprogramme. Weekly progress will be recor
 | Config        |          |
 | ------------- |:--------:|
 | current week    | 7 |
-| total time          | 20 + 20 + 16 + 12 + 20 + 10 = 98      |
+| total time          | 20 + 20 + 16 + 12 + 20 + 10 + 14 + 27 = 139      |
 | Approximate time required | ~280 |
 
 ## Seminars
@@ -36,3 +36,5 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 19 October 2016   |  |
 | 28 October 2016   |  |
 | 3 November 2016   |  |
+| 10 November 2016   | report on implementing/fixing the "remove unused handler example" |
+| 18 November 2016   |  |

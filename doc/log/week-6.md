@@ -47,7 +47,6 @@ let _ = value (Pervasives.( * ) 3 2)
 
 ## Meeting: 3 November 2016
 
-
 | Typing system        |          |
 | ------------- |:--------:|
 | `src/typing/constraints.ml` | Constraint definitions |

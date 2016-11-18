@@ -34,5 +34,18 @@
 
 ## Todo :: 31 Okt - 6 Nov 2016
 - [x] Fix optimization
+  * [ ] Fix is wrong
+
+## Todo :: 7 Okt - 13 Nov 2016
+- [x] Fix optimization using constraints
 - [ ] Clone efficient-handlers benchmark repository
-- [ ] Write split-handler optimization
+- [x] Write split-handler optimization: specialization
+
+## Todo :: 14 Okt - 20 Nov 2016
+- [x] Write split-handler optimization: specialization
+- [x] Write split-handler optimization: generalization
+- [x] Fix letin example optimization error
+- [ ] Fix apply example optimization error
+- [ ] Fix comment apply - purelambda optimization error
+- [ ] Rearrange optimizations
+- [ ] Add simpler automated testing
