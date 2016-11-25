@@ -1,4 +1,4 @@
-# 6. :: 7 Nov - 13 Nov 2016
+# 7. :: 7 Nov - 13 Nov 2016
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/7-fix-optimization` |

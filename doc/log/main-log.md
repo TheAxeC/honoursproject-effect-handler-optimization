@@ -26,6 +26,7 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 13 September 2016          | Deciding the topic of my honoursprogramme      |
 | 26 September 2016          | Start meeting for honoursprogramme      |
 | 26 October 2016          | Meeting to check my progress      |
+| 24 November 2016   |  Meeting to check my progress |
 
 | Project meetings        |          |
 | ------------- |:--------:|
@@ -38,3 +39,13 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 3 November 2016   |  |
 | 10 November 2016   | report on implementing/fixing the "remove unused handler example" |
 | 18 November 2016   |  |
+
+
+## Achievements
+- Remove handler: computation is pure for handler
+- Remove handler: bind: outer bind is pure for handler
+- Split-handler for bind: (inner bind is pure) specialization
+- Split-handler for bind: generalization
+- Handle LetRec optimization
+- Fix bug: pure_beta_reduce
+- Add testing script for optimizations

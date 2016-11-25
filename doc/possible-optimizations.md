@@ -32,17 +32,28 @@ with h' handle (c1)
 Similar to the situation above, except `c2` is not pure in terms of handler `h`
 
 
+## Handle a LetRec
+```ocaml
+with h handle (LetRec defs c)
+
+LetRec defs (with h handle c)
+```
+
 ## Possible optimizations:
 - [x] Unused
 - [x] | Value of expression
-- [ ] | Let of (pattern \* computation) list \* computation => nope
-- [ ] | LetRec of (variable \* abstraction) list \* computation => nope
+- [x] | Let of (pattern \* computation) list \* computation
+- [x] | LetRec of (variable \* abstraction) list \* computation
 - [x] | Match of expression \* abstraction list
-- [ ] | While of computation \* computation => nope
-- [ ] | For of variable \* expression \* expression \* computation \* bool => nope
+- [ ] | While of computation \* computation
+  * while loops are going to be removed
+- [ ] | For of variable \* expression \* expression \* computation \* bool
+  * for loops are going to be removed
 - [x] | Apply of expression \* expression
-- [x] | Handle of expression \* computation => happens implicitly: `optimize_comp st c = reduce_comp st (optimize_sub_comp st c)`
-- [ ] | Check of computation  => does not seem implemented
+- [x] | Handle of expression \* computation => happens implicitly:  
+  * `optimize_comp st c = reduce_comp st (optimize_sub_comp st c)`
+- [ ] | Check of computation  
+  * `check` is not implemented
 - [x] | Call of effect \* expression \* abstraction
 - [x] | Bind of computation \* abstraction
 - [x] | LetIn of expression \* abstraction

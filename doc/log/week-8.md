@@ -1,4 +1,4 @@
-# 6. :: 14 Nov - 20 Nov 2016
+# 8. :: 14 Nov - 20 Nov 2016
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/8-optimization-split-handler` |
