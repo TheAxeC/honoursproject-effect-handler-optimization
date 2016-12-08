@@ -29,20 +29,20 @@ let functionSimple () = 1 + #EffectExampleOther ()
 let functionSimple2 () = 1 + #EffectExample ()
 ;;
 
-(* Remove handlerExampleSimple *)
+"(* Remove handlerExampleSimple *)";;
 with handlerExampleSimple handle ( with handlerExampleSimple2 handle (functionSimple () + 2));;
 
-(*
+"(*
     functionSimple2 is pure in terms of handlerExampleSimple2
     handlerExampleSimple2 does not handle any effects from functionSimple2
-*)
+*)";;
 with handlerExampleSimple2 handle (functionSimple2 () + 2);;
 
-(* Not pure *)
+"(* Not pure *)";;
 with handlerExample handle (functionExample () + 2);;
 
-(* pure *)
+"(* pure *)";;
 with handlerExample handle (functionSimple () + 2);;
 
-(* Not pure *)
+"(* Not pure *)";;
 with handlerExample handle (functionSimple2 () + 2)
