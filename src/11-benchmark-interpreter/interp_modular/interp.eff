@@ -1,0 +1,105 @@
+
+(********************************
+* The Arithmetic Building Block
+********************************)
+
+type num = int;;
+
+effect Arith_DivByZero : unit -> num;;
+
+type termA =
+    | Num of num
+    | Add of (termA * termA)
+    | Div of (termA * termA)
+
+;;
+
+let rec interpA a =
+    match a with
+    | Num b -> b
+    | Add (l, r) -> (interpA l) + (interpA r)
+    | Div (l, r) ->
+        let r_num = (interpA r) in
+        match r_num with
+        | 0 -> #Arith_DivByZero ()
+        | _ -> (interpA l) / r_num
+
+;;
+
+(********************************
+* The Function Building Block
+********************************)
+
+type env = (string * num) list;;
+type name = string;;
+
+effect VarNotFound : unit -> empty;;
+effect ReadEnv : unit -> env;;
+effect InEnv : (env * num) -> num;;
+
+type termF =
+    | Var of name
+    | LambdaN of (name * termA)
+    | LambdaV of (name * termA)
+    | App of (termF * termA)
+;;
+
+let rec lookupEnv x = function
+    | [] -> absurd (#VarNotFound ())
+    | (x', y) :: lst -> if x = x' then y else lookupEnv x lst;;
+
+let extendEnv k v env =
+    (k, v) :: env;;
+
+let rec interpF a =
+    match a with
+    | Var v -> lookupEnv v (#ReadEnv ())
+    | LambdaN (s, t) ->
+        let ext = (extendEnv s 0 (#ReadEnv ()) ) in
+        #InEnv (ext, interpA t)
+    | LambdaV (s, t) ->
+        let ext = (extendEnv s 0 (#ReadEnv ()) ) in
+        #InEnv (ext, interpA t)
+    (* | App (e1, e2) ->
+        e1 (#InEnv ((#ReadEnv ()), interpA e2)) *)
+;;
+
+(********************************
+* The Function Building Block
+********************************)
+
+type termR =
+    | Ref of term 
+
+(********************************
+* Use effect handler to mimic
+* monad transformers
+********************************)
+
+let arithmeticHandler = handler
+    | #Arith_DivByZero () k ->  (absurd (#DivisionByZero ()))
+
+;;
+
+
+(* let environmentHandler = handler
+    | val y -> (fun _ -> y)
+    | #LookupEnv x k -> (fun s -> k (lookup x s) s)
+    | #ExtendEnv (x, y) k -> (fun s -> k y (update x y s));;
+ *)
+
+
+(********************************
+* Tests
+********************************)
+
+(* Simple arithmetic test *)
+let test1 = interpA (Add (Num 5, Num 3));;
+assert(test1 = 8);;
+
+
+(* Division by zero test *)
+let test2 = with arithmeticHandler handle (
+    interpA (Div (Num 5, Num 0))
+);;
+assert(test2 = 0);;

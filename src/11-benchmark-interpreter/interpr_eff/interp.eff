@@ -1,0 +1,187 @@
+
+(***********************************
+******* The Building Blocks ********
+***********************************)
+
+(*
+TODO:
+    Function building Block
+    Lazy Evaluation Building Block
+    Program Tracing Building Block
+    Continuation Building Block
+    Nondeterminism Building Block
+*)
+
+(********************************
+* Types
+********************************)
+
+type num = int;;
+
+type term =
+    | Num of num
+    | Add of (term * term)
+    | Div of (term * term)
+    | Ref of term
+    | Deref of term
+    | Assign of (term * term)
+;;
+type loc = int;;
+
+(********************************
+* Effects
+********************************)
+
+effect Arith_DivByZero : unit -> num;;
+
+effect VarNotFound : unit -> empty;;
+effect AllocLoc : unit -> loc;;
+effect LookupLoc : loc -> num;;
+effect UpdateLoc : (loc * num) -> num;;
+
+(********************************
+* Helper methods
+********************************)
+
+let rec lookupState x = function
+    | [] -> absurd (#VarNotFound ())
+    | (x', y) :: lst -> if x = x' then y else lookupState x lst;;
+
+let updateState k v env =
+    (k, v) :: env;;
+
+(********************************
+* Main interpreter method
+********************************)
+
+let rec interp a =
+    (* Arithmetic *)
+    begin match a with
+    | Num b -> b
+    | Add (l, r) -> (interp l) + (interp r)
+    | Div (l, r) ->
+        let r_num = (interp r) in
+        begin match r_num with
+        | 0 -> #Arith_DivByZero ()
+        | _ -> (interp l) / r_num
+        end
+    | Ref x ->
+        let x_interp = interp x in
+        let x_loc = #AllocLoc () in
+        #UpdateLoc (x_loc, x_interp)
+    | Deref x ->
+        let x_interp = interp x in
+        #LookupLoc x_interp
+    | Assign (lhs, rhs) ->
+        let x_loc = interp lhs in
+        let x_interp = interp rhs in
+        #UpdateLoc (x_loc, x_interp)
+    end
+;;
+
+let rec interpTopLevel lst results =
+    match lst with
+    | [] -> results
+    | top :: tail ->
+        interpTopLevel tail (results @ [(interp top)])
+
+;;
+
+(********************************
+* Use effect handler to mimic
+* monad transformers
+********************************)
+
+let arithmeticHandler = handler
+    | #Arith_DivByZero () k ->  -1 (* (absurd (#DivisionByZero ())) *)
+
+;;
+
+let stateHandler = handler
+    | val y -> (fun _ -> y)
+    | #LookupLoc x k -> (fun s -> k (lookupState x s) s)
+    | #UpdateLoc (x, y) k -> (fun s -> k y (updateState x y s))
+
+;;
+
+(********************************
+* Tests
+********************************)
+
+(* Simple arithmetic test *)
+let test1 = interp (Add (Num 5, Num 3));;
+assert(test1 = 8);;
+
+
+(* Division by zero test *)
+let test2 = with arithmeticHandler handle (
+    interp (Div (Num 5, Num 0))
+);;
+assert(test2 = -1);;
+
+(* Statehandler test *)
+let test3 = (with stateHandler handle (
+    let a = #UpdateLoc (1, 2) in
+    #LookupLoc 1
+)) [];;
+assert(test3 = 2);;
+
+
+(* Statehandler test *)
+let test4 = (with stateHandler handle (
+    let _ = interp (Assign (Num 1, Num 2)) in
+    interp (Deref (Num 1))
+)) [];;
+assert(test4 = 2);;
+
+(* (with stateHandler handle (
+    let lst = [(Assign (Num 1, Num 2)) ; (Deref (Num 1)) ] in
+    interpTopLevel lst []
+)) [];; *)
+
+(********************************
+* The Function Building Block
+********************************)
+
+(* type env = (string * num) list;;
+type name = string;;
+
+effect VarNotFound : unit -> empty;;
+effect ReadEnv : unit -> env;;
+effect InEnv : (env * num) -> num;;
+
+type termF =
+    | Var of name
+    | LambdaN of (name * termA)
+    | LambdaV of (name * termA)
+    | App of (termF * termA)
+;;
+
+let rec lookupEnv x = function
+    | [] -> absurd (#VarNotFound ())
+    | (x', y) :: lst -> if x = x' then y else lookupEnv x lst;;
+
+let extendEnv k v env =
+    (k, v) :: env;;
+
+let rec interpF a =
+    match a with
+    | Var v -> lookupEnv v (#ReadEnv ())
+    | LambdaN (s, t) ->
+        let ext = (extendEnv s 0 (#ReadEnv ()) ) in
+        #InEnv (ext, interpA t)
+    | LambdaV (s, t) ->
+        let ext = (extendEnv s 0 (#ReadEnv ()) ) in
+        #InEnv (ext, interpA t)
+    (* | App (e1, e2) ->
+        e1 (#InEnv ((#ReadEnv ()), interpA e2)) *)
+;; *)
+
+
+
+
+(* let environmentHandler = handler
+    | val y -> (fun _ -> y)
+    | #LookupEnv x k -> (fun s -> k (lookup x s) s)
+    | #ExtendEnv (x, y) k -> (fun s -> k y (update x y s));;
+ *)
