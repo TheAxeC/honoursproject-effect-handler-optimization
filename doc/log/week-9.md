@@ -1,9 +1,11 @@
-# 9. :: 21 Okt - 27 Nov 2016
+# 9. :: 21 Nov - 27 Nov 2016
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/9-optimization-let-rec` |
-| time          | **Spend approximately 8 hours this week.**      |
+| time          | **Spend approximately 14 hours this week.**      |
 | head          | `	e5ee123`      |
+| commit: handle LetRec | `8e3e6a7` |
+| commit: improve inlining of pervasives | `15e5892` |
 
 ## Clone efficient-handlers benchmark repository
 Cloned the efficient-handlers repository
@@ -20,5 +22,13 @@ Cloned the efficient-handlers repository
 
 I still need to write a testcase to show the optimization.
 
+## Improve inlining
+Some pervasives weren't being inlined properly. These pervasives were:
+- `<=`
+- `>=`
+- `!=`
+- `<`
+- `<>`
+
 ## Write benchmark programs
-monad transformers vb porten naar Eff: paper monad modular interpreter
+I need to port the monad transformers paper porten to Eff. (paper: monad modular interpreter)

@@ -45,14 +45,14 @@ LetRec defs (with h handle c)
 - [x] | Let of (pattern \* computation) list \* computation
 - [x] | LetRec of (variable \* abstraction) list \* computation
 - [x] | Match of expression \* abstraction list
-- [ ] | While of computation \* computation
+- [x] | While of computation \* computation
   * while loops are going to be removed
-- [ ] | For of variable \* expression \* expression \* computation \* bool
+- [x] | For of variable \* expression \* expression \* computation \* bool
   * for loops are going to be removed
 - [x] | Apply of expression \* expression
 - [x] | Handle of expression \* computation => happens implicitly:  
   * `optimize_comp st c = reduce_comp st (optimize_sub_comp st c)`
-- [ ] | Check of computation  
+- [x] | Check of computation  
   * `check` is not implemented
 - [x] | Call of effect \* expression \* abstraction
 - [x] | Bind of computation \* abstraction

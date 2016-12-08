@@ -34,14 +34,14 @@
 
 ## Todo :: 31 Okt - 6 Nov 2016
 - [x] Fix optimization
-  * [ ] Fix is wrong
+  * Fix is wrong
 
-## Todo :: 7 Okt - 13 Nov 2016
+## Todo :: 7 Nov - 13 Nov 2016
 - [x] Fix optimization using constraints
 - [ ] Clone efficient-handlers benchmark repository
 - [x] Write split-handler optimization: specialization
 
-## Todo :: 14 Okt - 20 Nov 2016
+## Todo :: 14 Nov - 20 Nov 2016
 - [x] Write split-handler optimization: specialization
 - [x] Write split-handler optimization: generalization
 - [x] Fix letin example optimization error
@@ -50,7 +50,16 @@
 - [x] Add simpler automated testing
 - [ ] Clone efficient-handlers benchmark repository
 
-## Todo :: 21 Okt - 27 Nov 2016
+## Todo :: 21 Nov - 27 Nov 2016
 - [x] Clone efficient-handlers benchmark repository
 - [x] Write handler optimization: let-rec
 - [ ] Write benchmark programs (monad transformers vb porten naar Eff: paper monad modular interpreter)
+  * work in progress
+
+## Todo :: 28 Nov - 4 Dec 2016
+- [ ] Write benchmark programs (monad transformers vb porten naar Eff: paper monad modular interpreter)
+  * used effects wrong
+
+## Todo :: 4 Dec - 11 Dec 2016
+- [x] Start working on ICFP paper: rewrite-rules
+- [x] Write benchmark programs (monad transformers vb porten naar Eff: paper monad modular interpreter)
