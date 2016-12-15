@@ -6,3 +6,11 @@ _tmp
 
 eff/
 efficient-handlers/
+
+*.cmi
+*.cmo
+*.cmx
+
+_log/
+_digests/
+_build/
