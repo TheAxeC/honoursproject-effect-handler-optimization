@@ -5,7 +5,7 @@ This is my main log file for the honoursprogramme. Weekly progress will be recor
 | Config        |          |
 | ------------- |:--------:|
 | current week    | 10 |
-| total time          | 20 + 20 + 16 + 12 + 20 + 10 + 14 + 27 + 14 + 20 = 173      |
+| total time          | 20 + 20 + 16 + 12 + 20 + 10 + 14 + 27 + 14 + 20 + 22 = 195      |
 | Approximate time required | ~280 |
 
 ## Seminars
@@ -43,6 +43,9 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 30 November 2016   |  |
 | 5 December 2016   |  |
 | 8 December 2016   | Meeting paper + interpreter |
+| 12 December 2016   |  |
+| 13 December 2016   | Couldn't go to this meeting due to class |
+| 14 December 2016   | Update on meeting from day before |
 
 | Meetings with Amr        |          |
 | ------------- |:--------:|
@@ -52,7 +55,6 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 6 December 2016   | Writing ICFP paper |
 | 7 December 2016   | Writing ICFP paper|
 
-
 ## Achievements
 - Remove handler: computation is pure for handler
 - Remove handler: bind: outer bind is pure for handler
@@ -61,3 +63,4 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 - Handle LetRec optimization
 - Fix bug: pure_beta_reduce
 - Add testing script for optimizations
+- Benchmark script: Interpreter

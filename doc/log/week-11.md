@@ -2,7 +2,7 @@
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/11-benchmark-interpreter` |
-| time          | **Spend approximately 20 hours this week.**      |
+| time          | **Spend approximately 22 hours this week.**      |
 | head          | `d70ce47`      |
 
 ## ICFP Paper: Efficient Compilation of Algebraic Effects and Handlers
