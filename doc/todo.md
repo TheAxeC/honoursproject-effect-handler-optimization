@@ -60,6 +60,16 @@
 - [ ] Write benchmark programs (monad transformers vb porten naar Eff: paper monad modular interpreter)
   * used effects wrong
 
-## Todo :: 4 Dec - 11 Dec 2016
+## Todo :: 5 Dec - 11 Dec 2016
 - [x] Start working on ICFP paper: rewrite-rules
 - [x] Write benchmark programs (monad transformers vb porten naar Eff: paper monad modular interpreter)
+
+## Todo :: 12 Dec - 18 Dec 2016
+- [x] let x = e1 in c1
+- [x] pure => empty set
+- [x] operational semantics
+- [x] parser
+- [ ] parser/interpreter inlining/optimizing code
+
+## Todo :: 19 Dec - 25 Dec 2016
+- [ ] parser/interpreter inlining/optimizing code

@@ -130,7 +130,7 @@ let rec parseExpression =
 
 let test1 = (with consumeHandler handle (
     parseFactor ()
-)) ["1"; "0"; "2"];;
+));;
 
 (* let test1 = (with consumeHandler handle (
     parseFactor

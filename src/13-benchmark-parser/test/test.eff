@@ -1,0 +1,23 @@
+
+effect Consume : unit -> string;;
+
+let consumeHandler = handler
+    | val y -> (fun _ -> y)
+    | #Consume () k ->
+        fun s ->
+        (match s with
+            | [] -> k "x" s (* absurd (#Fail ()) *)
+            | (x :: xs) -> k "x" s)
+;;
+
+let rec parseNum prev =
+    let curChar = "0" in
+    begin match curChar with
+    | "0" -> parseNum 0
+    | _ -> #Consume ()
+    end
+;;
+
+let test1 = (with consumeHandler handle (
+    parseNum 0
+)) [];;

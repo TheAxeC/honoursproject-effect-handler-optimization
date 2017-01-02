@@ -1,8 +1,8 @@
-# 11. :: 12 Dec - 18 Dec 2016
+# 12. :: 12 Dec - 18 Dec 2016
 | Config        |          |
 | ------------- |:--------:|
 | src folder    | `src/12-benchmark-parser` |
-| time          | **Spend approximately 5 hours this week.**      |
+| time          | **Spend approximately 18 hours this week.**      |
 | head          | `6b0f29a`      |
 | commit: update tests | `6b0f29a` |
 | commit: delete test for for-loop | `f706fec` |
@@ -13,6 +13,7 @@
 
 ## ICFP Paper: Efficient Compilation of Algebraic Effects and Handlers
 I have begun writing the ICFP paper that is currently called: Efficient Compilation of Algebraic Effects and Handlers.
-Mostly I have been writing the optimisation chapter. More specifically, the rewrite rules.
+Mostly I have been writing the optimisation chapter. More specifically, the rewrite rules and the terms that were added for optimization.
 
 ## Write benchmark programs: parser
+Wrote a first version of the parser. It consumes characters and computes a numerical result.
