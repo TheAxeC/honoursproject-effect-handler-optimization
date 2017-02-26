@@ -72,4 +72,46 @@
 - [ ] parser/interpreter inlining/optimizing code
 
 ## Todo :: 19 Dec - 25 Dec 2016
-- [ ] parser/interpreter inlining/optimizing code
+- [x] parser/interpreter inlining/optimizing code
+
+## Todo :: 25 Dec 2016 - 01 Jan 2017
+- [x] parser inlining/optimizing code
+
+## Todo :: 03 Jan - 06 Jan 2017
+- [x] fix benchmark to remove handlers
+- [x] benchmark: make examples
+- [x] push benchmarks to repo
+- [x] ~~convert let to bind~~
+- [x] ~~add pervasives/ compile with -no-pervasives~~
+
+## Todo :: 06 Jan - 13 Jan 2017
+- [x] small loop benchmark
+- [ ] native parser (option + fail)
+- [ ] native interpreter (option + fail)
+- [ ] unoptimized loop benchmark
+
+## Todo :: 13 Jan - 03 Feb 2017
+- [x] exams
+
+## Todo :: 03 Feb - 12 Feb 2017
+- [x] unoptimized loop benchmark
+- [x] read paper
+- [x] nqueens: cps style native version
+- [x] make result table in paper
+- [ ] ~~native parser (option + fail) (parser will not be included in paper)~~
+- [ ] ~~native interpreter (interpreter will not be included in paper)~~
+- [ ] ~~check for lambda inlining => allow additional optimizations (no priority)~~
+
+## Todo :: 13 Feb - 27 Feb 2017
+- [x] multicore ocaml backend (Change eff file untill it works for multicore)
+- [x] Eff directly in OCaml
+- [x] Compiling links effect handlers for the ocaml backend / Liberating Effects with Rows and Handlers
+- [x] handlers in action repository ocaml
+- [x] compare interpreted version
+- [x] read paper
+- [ ] ~~native parser (option + fail + cps)~~
+- [x] native interpreter
+- [ ] ~~change definitions of primitives (free monad datatype => cps style)~~
+- [x] try kayceesrk/eff_delimcc_ocaml => doesn't work
+- [x] Delimcc message KC
+- [x] multicore-links-queens benchmark: 9,10,11,12,13,14,15 queens
