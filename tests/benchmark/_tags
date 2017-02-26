@@ -1,5 +1,0 @@
-<loop/**>: include
-<queens/**>: include
-<interp/**>: include
-true:package(core, core_bench)
-true:thread
