@@ -1,0 +1,15 @@
+type nat = Zero | Succ of nat
+
+
+effect Op : unit -> int
+
+let rec branch = function
+| Zero -> #Op ()
+| Succ t -> branch t + branch t
+;;
+
+(
+    handle branch (Succ Zero ) with
+    | val y ->  y
+    | #Op () k -> k 42
+)

@@ -1,0 +1,15 @@
+
+let lambda n = n - 1
+;;
+
+let rec loop n =
+    if n = 0 then ()
+    else
+        loop (n - 1)
+;;
+
+let rec loopLambda n =
+    if n = 0 then ()
+    else
+        loop (lambda n)
+;;
