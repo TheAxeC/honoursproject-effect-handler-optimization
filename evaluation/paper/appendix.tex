@@ -1,0 +1,44 @@
+\section{Term rewriting: code}
+\label{code}
+Below is the code for the rule rewritting as implemented in the Eff compiler.
+\begin{efflisting}[breaklines=true]
+  | Handle ({term = Handler h}, c1)
+        when (is_pure_for_handler c1 h.effect_clauses) ->
+    useFuel st;
+    (* Print.debug "Remove handler, since no effects in common with computation"; *)
+    reduce_comp st (bind c1 h.value_clause)
+
+  | Handle ({term = Handler h} as handler, {term = Bind (c1, {term = (p1, c2)})})
+        when (is_pure_for_handler c1 h.effect_clauses) ->
+    useFuel st;
+    (* Print.debug "Remove handler of outer Bind, since no effects in common with computation"; *)
+    reduce_comp st (bind (reduce_comp st c1) (abstraction p1 (reduce_comp st (handle (refresh_expr handler) c2))))
+
+  | Handle ({term = Handler h}, {term = Bind (c1, {term = (p1, c2)})})
+        when (is_pure_for_handler c2 h.effect_clauses) ->
+    useFuel st;
+    (* Print.debug "Move inner bind into the value case"; *)
+    let new_value_clause = optimize_abs st (abstraction p1 (bind (reduce_comp st c2) (refresh_abs h.value_clause))) in
+    let hdlr = handler {
+      effect_clauses = h.effect_clauses;
+      value_clause = refresh_abs new_value_clause;
+    } in
+    reduce_comp st (handle (refresh_expr hdlr) c1)
+
+  | Handle ({term = Handler h} as h2, {term = Bind (c1, {term = (p, c2)})}) ->
+    useFuel st;
+    (* Print.debug "Move (dirty) inner bind into the value case"; *)
+    let new_value_clause = optimize_abs st (abstraction p (handle (refresh_expr h2) (refresh_comp (reduce_comp st c2) ))) in
+    let hdlr = handler {
+      effect_clauses = h.effect_clauses;
+      value_clause = refresh_abs new_value_clause;
+    } in
+    reduce_comp st (handle (refresh_expr hdlr) (refresh_comp c1))
+    
+  | Handle (h, {term = LetRec (defs, co)}) ->
+  let handle_h_c = reduce_comp st (handle h co) in
+  let res =
+    let_rec' defs handle_h_c
+  in
+  reduce_comp st res
+\end{efflisting}

@@ -1,0 +1,90 @@
+\documentclass[notitlepage]{article}
+
+\usepackage{titling}
+
+\pretitle{\begin{center}\huge\bfseries}
+\posttitle{\par\end{center}\vskip 0.5em}
+\preauthor{\begin{center}\Large}
+\postauthor{\end{center}}
+\predate{\par\large\centering}
+\postdate{\par}
+
+\usepackage{graphicx}
+\usepackage{mathpartir}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{stmaryrd}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage[backend=bibtex, sorting=none, maxbibnames=99]{biblatex}
+\usepackage{parskip}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{geometry}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.8}
+\usepackage{pgfplotstable}
+\renewcommand*{\familydefault}{\sfdefault}
+
+\geometry{
+	paper=a4paper, % Change to letterpaper for US letter
+	margin=3cm
+}
+
+\input{macros}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textsc{TODO:} #1}}
+\newcommand{\rules}[1]{\textcolor{green}{\textsc{Rule:} #1}}
+\newcommand{\feedback}[2]{\textcolor{blue}{\textsc{#1}:#2}}
+
+\lstset{%
+language=Caml,
+moredelim=*[is][\itshape]{/@}{@/},
+numbers=none,mathescape=true,showstringspaces=false,
+morekeywords={handle,handler,with,val},
+keywordstyle=\bfseries,
+xleftmargin=1em,basicstyle=\ttfamily\small}
+\lstnewenvironment{source}{\lstset{
+basicstyle=\ttfamily\small,
+% Uncomment to enable bold keywords in source environments
+% keywordstyle=\bfseries
+}}{}
+\newcommand{\effcode}[1]{\textcolor{magenta}{\lstinline{#1}}}
+\newcommand{\ocamlcode}[1]{\textcolor{teal}{\lstinline{#1}}}
+\lstnewenvironment{efflisting}{\lstset{breaklines=true,
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},basicstyle=\ttfamily\small\color{magenta}}}{}
+\lstnewenvironment{ocamllisting}{\lstset{breaklines=true,
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},basicstyle=\ttfamily\small\color{teal}}}{}
+\lstnewenvironment{linkslisting}{\lstset{breaklines=true,
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},basicstyle=\ttfamily\small\color{blue}}}{}
+
+\bibliography{evaluation.bib} 
+
+\title{\vspace{-2cm}Honoursprogramme: Research track, option A (9 ECTS) \\\mbox{}\\ {Efficient Compilation of Algebraic Effects and Handlers in Eff}}
+\author{Student: Axel Faes\\{ Promotor: Prof. dr. ir. Tom Schrijvers}\\{Daily supervisors:  Prof. dr. ir. Tom Schrijvers \&\\ Amr Hany Shehata Saleh}\\\mbox{}\\{Master in de ingenieurswetenschappen: \\computerwetenschappen}\\{Specialisatie: Artificial Intelligence}\\{Fase 1}}
+\date{September 2016 - March 2017}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Description}
+\input{description}
+
+\section{Reflection}
+\input{reflection}
+
+\section{Conclusions}
+\input{conclusion}
+
+\appendix
+\input{zelfreflectie}
+\input{appendix}
+
+\printbibliography
+
+\end{document}

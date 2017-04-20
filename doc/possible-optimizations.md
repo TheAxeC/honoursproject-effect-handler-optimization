@@ -32,7 +32,7 @@ with h' handle (c1)
 Similar to the situation above, except `c2` is not pure in terms of handler `h`
 
 
-## Handle a LetRec
+## Handle a LetRec (implemented)
 ```ocaml
 with h handle (LetRec defs c)
 
