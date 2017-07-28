@@ -10,7 +10,7 @@ We use the information of the type and effect system and the syntactic structure
 of goals to perform a number of optimisations. We mainly target optimisations
 that helps in removing handlers.
 
-I need to construct, implement and proof such optimisations. Other tasks include: creating benchmarking programs and help writing the (ICFP) paper. The benchmark I wrote is an interpreter for a small language which includes variables and functions.
+I need to construct, implement and proof such optimisations. Other tasks include: creating benchmarking programs and help writing the paper. The benchmark I wrote is an interpreter for a small language which includes variables and functions.
 
 ## Installing Eff
 See the [Eff repository](https://github.com/matijapretnar/eff) for instructions.
