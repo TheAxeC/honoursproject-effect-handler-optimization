@@ -5,7 +5,7 @@ This is my main log file for the honoursprogramme. Weekly progress will be recor
 | Config        |          |
 | ------------- |:--------:|
 | current week    | 10 |
-| total time          | 20 + 20 + 16 + 12 + 20 + 10 + 14 + 27 + 14 + 20 + 22 + 18 + 16 + 12 + 18 + 60 = 301      |
+| total time          | 20 + 20 + 16 + 12 + 20 + 10 + 14 + 27 + 14 + 20 + 22 + 18 + 16 + 12 + 18 + 60 + ~60 = 361 ~> 12-15 ECTS     |
 | Approximate time required | ~280 |
 
 ## Seminars
