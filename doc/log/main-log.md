@@ -27,6 +27,8 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 26 September 2016          | Start meeting for honoursprogramme      |
 | 26 October 2016          | Meeting to check my progress      |
 | 24 November 2016   |  Meeting to check my progress |
+| 29 March 2017   | Preparation of defense of honoursprogramme |
+| 3 April 2017   | Defense of honoursprogramme |
 
 | Project meetings        |          |
 | ------------- |:--------:|
@@ -51,6 +53,20 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 3 January 2017   | |
 | 6 January 2017   | |
 | 11 January 2017   | |
+| 13 January 2017   | |
+| 18 January 2017   | |
+| 31 January 2017   | |
+| 3 February 2017   | |
+| 7 February 2017   | |
+| 9 February 2017   | |
+| 13 February 2017   | |
+| 15 February 2017   | |
+| 17 February 2017   | |
+| 20 February 2017   | |
+| 21 February 2017   | |
+| 23 February 2017   | |
+| 24 February 2017   | |
+| 27 February 2017   | |
 
 | Meetings with Amr        |          |
 | ------------- |:--------:|
@@ -61,6 +77,7 @@ Seminars I attended during the course of 2016-2017. These are not a part of the 
 | 7 December 2016   | Writing ICFP paper|
 | 16 December 2016   | Writing ICFP paper|
 | 22 December 2016   | Writing ICFP paper|
+| 7 February 2017   | |
 
 ## Achievements
 - Remove handler: computation is pure for handler
