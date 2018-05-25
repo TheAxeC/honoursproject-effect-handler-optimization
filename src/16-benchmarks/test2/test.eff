@@ -1,9 +1,0 @@
-effect Arith_DivByZero : unit -> int;;
-effect Eff2 : unit -> int;;
-
-let arithmeticHandler = handler
-    | #Arith_DivByZero () k ->  k 1
-;;
-let eff2Handler = handler
-    | #Eff2 () k ->  k 1
-;;

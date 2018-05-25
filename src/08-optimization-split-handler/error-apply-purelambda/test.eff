@@ -1,6 +1,0 @@
-
-external ( < ) : 'a -> 'a -> bool = "<"
-
-external ( ~- ) : int -> int = "~-"
-
-let abs x = if x < 0 then -x else x
